@@ -9,8 +9,8 @@
         a { text-decoration: none !important; }
 
         body {
-            background: #ffffff;
-            color: #0a0a0f;
+            background: #0a0a0f;
+            color: #fff;
             font-family: 'Segoe UI', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
@@ -24,27 +24,33 @@
             align-items: center;
             justify-content: space-between;
             padding: 20px 60px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(10,10,15,0.9);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #222;
         }
 
-        .logo { font-size: 22px; font-weight: 800; letter-spacing: 4px; color: #0a0a0f; }
-        .logo span { color: #000; }
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .logo span { color: #aaa; }
 
         .nav-links { display: flex; gap: 40px; list-style: none; }
         .nav-links a {
-            color: #555;
+            color: #aaa;
             font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: color 0.3s;
         }
-        .nav-links a:hover { color: #000; }
+        .nav-links a:hover { color: #fff; }
 
         .nav-btn {
-            background: #0a0a0f;
-            color: #fff !important;
+            background: #fff;
+            color: #000 !important;
             border: none;
             padding: 10px 24px;
             border-radius: 8px;
@@ -55,7 +61,6 @@
         }
         .nav-btn:hover { opacity: 0.8; }
 
-        /* Hero */
         .hero {
             position: relative;
             z-index: 1;
@@ -67,13 +72,12 @@
             text-align: center;
             padding: 0 20px;
             background: #0a0a0f;
-            color: #fff;
         }
 
         .hero-tag {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #aaa;
             padding: 6px 18px;
             border-radius: 20px;
             font-size: 12px;
@@ -86,7 +90,7 @@
         .hero h1 .white { color: #fff; }
         .hero h1 .outline { color: transparent; -webkit-text-stroke: 2px #fff; }
 
-        .hero-sub { font-size: 16px; color: #aaa; margin: 20px 0 40px; max-width: 500px; line-height: 1.7; }
+        .hero-sub { font-size: 16px; color: #666; margin: 20px 0 40px; max-width: 500px; line-height: 1.7; }
 
         .hero-btns { display: flex; gap: 16px; }
 
@@ -139,38 +143,37 @@
         .t-green { color: #28ca41; }
         .t-white { color: #ccc; }
 
-        /* Tools секция */
-        .tools { padding: 100px 60px; background: #fff; }
+        .tools { padding: 100px 60px; background: #0a0a0f; border-top: 1px solid #1a1a1a; }
 
-        .section-title { text-align: center; font-size: 42px; font-weight: 800; margin-bottom: 10px; color: #0a0a0f; }
-        .section-sub { text-align: center; color: #999; margin-bottom: 60px; font-size: 15px; }
+        .section-title { text-align: center; font-size: 42px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .section-sub { text-align: center; color: #555; margin-bottom: 60px; font-size: 15px; }
 
         .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
 
         .tool-card {
-            background: #f8f8f8;
-            border: 1px solid #e0e0e0;
+            background: #111;
+            border: 1px solid #222;
             border-radius: 16px;
             padding: 30px;
             transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
-        .tool-card:hover { border-color: #000; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .tool-card:hover { border-color: #fff; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(255,255,255,0.05); }
 
         .tool-icon {
             width: 48px; height: 48px;
-            background: #0a0a0f;
+            background: #1a1a1a;
             border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
             font-size: 22px; margin-bottom: 16px;
         }
 
-        .tool-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #0a0a0f; }
-        .tool-desc { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 20px; }
+        .tool-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+        .tool-desc { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 20px; }
 
         .tool-btn {
-            background: #0a0a0f;
-            color: #fff !important;
+            background: #fff;
+            color: #000 !important;
             border: none;
             padding: 10px 20px;
             border-radius: 8px;
@@ -178,6 +181,7 @@
             cursor: pointer;
             transition: opacity 0.2s, transform 0.2s;
             display: inline-block;
+            font-weight: 600;
         }
         .tool-btn:hover { opacity: 0.8; transform: translateY(-1px); }
 
@@ -186,21 +190,22 @@
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: #fff;
+            background: #0a0a0f;
+            color: #fff;
             z-index: 200;
             overflow-y: auto;
-            padding: 80px 60px;
+            padding: 100px 60px;
         }
-
         .tool-page.active { display: block; }
 
         .back-btn {
-            background: #0a0a0f;
-            color: #fff !important;
+            background: #fff;
+            color: #000 !important;
             border: none;
             padding: 10px 24px;
             border-radius: 8px;
             font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
             margin-bottom: 40px;
             display: inline-block;
@@ -208,37 +213,24 @@
         }
         .back-btn:hover { opacity: 0.8; }
 
-        .tool-page-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        .tool-page-inner { max-width: 900px; margin: 0 auto; }
 
-        .tool-page-title {
-            font-size: 48px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            color: #0a0a0f;
-        }
-
-        .tool-page-desc {
-            font-size: 16px;
-            color: #888;
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
+        .tool-page-title { font-size: 48px; font-weight: 900; margin-bottom: 10px; color: #fff; }
+        .tool-page-desc { font-size: 16px; color: #aaa; margin-bottom: 40px; line-height: 1.7; }
 
         .tool-page-img {
             width: 100%;
             max-width: 700px;
             border-radius: 16px;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #222;
             margin-bottom: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            display: block;
         }
 
         .tool-page-download {
-            background: #0a0a0f;
-            color: #fff !important;
+            background: #fff;
+            color: #000 !important;
             border: none;
             padding: 16px 40px;
             border-radius: 10px;
@@ -250,34 +242,32 @@
         }
         .tool-page-download:hover { opacity: 0.8; transform: translateY(-2px); }
 
-        /* About */
         .about {
             padding: 100px 60px;
             text-align: center;
             background: #0a0a0f;
-            color: #fff;
-            border-top: 1px solid #222;
+            border-top: 1px solid #1a1a1a;
         }
 
         .about-inner { max-width: 800px; margin: 0 auto; }
-        .about-text { color: #aaa; font-size: 16px; line-height: 1.8; margin: 20px 0 50px; }
-        .about-cards { display: flex; justify-content: center; gap: 20px; }
+        .about-text { color: #666; font-size: 16px; line-height: 1.8; margin: 20px 0 50px; }
+        .about-cards { display: flex; justify-content: center; }
 
         .about-card {
             background: #111;
-            border: 1px solid #333;
+            border: 1px solid #222;
             border-radius: 16px;
             padding: 40px 60px;
             transition: border-color 0.3s, transform 0.3s;
         }
         .about-card:hover { border-color: #fff; transform: translateY(-4px); }
         .about-name { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-        .about-role { font-size: 13px; color: #aaa; letter-spacing: 1px; }
+        .about-role { font-size: 13px; color: #666; letter-spacing: 1px; }
 
         .about-tag {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
             padding: 6px 18px;
             border-radius: 20px;
             font-size: 12px;
@@ -291,8 +281,8 @@
             text-align: center;
             padding: 40px;
             background: #0a0a0f;
-            border-top: 1px solid #222;
-            color: #555;
+            border-top: 1px solid #1a1a1a;
+            color: #444;
             font-size: 13px;
             letter-spacing: 1px;
         }
@@ -301,9 +291,8 @@
 </head>
 <body>
 
-<!-- Навбар -->
 <nav>
-    <div class="logo">EZ <span>SQUAD</span></div>
+    <div class="logo" onclick="showMain()">EZ <span>SQUAD</span></div>
     <ul class="nav-links">
         <li><a href="#" onclick="showMain()">Главная</a></li>
         <li><a href="#tools">Тулки</a></li>
@@ -313,7 +302,6 @@
     <a href="https://discord.gg/dkPgGBkU4N" target="_blank" class="nav-btn">Discord</a>
 </nav>
 
-<!-- Главная страница -->
 <div id="main-content">
 
     <section class="hero">
@@ -327,7 +315,6 @@
             <a href="#tools" class="btn-primary">⚡ Тулки</a>
             <a href="https://discord.gg/dkPgGBkU4N" target="_blank" class="btn-secondary">→ Discord</a>
         </div>
-
         <div class="terminal">
             <div class="terminal-bar">
                 <div class="dot red"></div>
@@ -343,7 +330,7 @@
                 <div><span class="t-green">Liberium-1.7&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
                 <div><span class="t-green">NetFoxTool&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
                 <div><span class="t-green">Xbinder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
-                <div><span class="t-green">Sheet DDOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
+                <div><span class="t-green">SheetExploit&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
                 <div><span class="t-green">Locker Builder&nbsp;&nbsp;[ 200 ]</span></div>
                 <div><span class="t-gray">6/6 Completed</span></div>
             </div>
@@ -351,7 +338,7 @@
     </section>
 
     <section class="tools" id="tools">
-        <h2 class="section-title">Наши <span style="color:#000">Тулки</span></h2>
+        <h2 class="section-title">Наши Тулки</h2>
         <p class="section-sub">Всё необходимое в одном месте</p>
         <div class="tools-grid">
             <div class="tool-card" onclick="openTool('xworm')">
@@ -396,7 +383,7 @@
     <section class="about" id="about">
         <div class="about-inner">
             <div class="about-tag">👤 О нас</div>
-            <h2 style="font-size:42px;font-weight:800;margin-bottom:10px;">Кто мы такие?</h2>
+            <h2 style="font-size:42px;font-weight:800;margin-bottom:10px;color:#fff;">Кто мы такие?</h2>
             <p class="about-text">EZ SQUAD — это команда профессионалов под руководством <span style="color:#fff;font-weight:700;">lort</span>. Мы собрали лучшие инструменты в одном месте для нашего комьюнити.</p>
             <div class="about-cards">
                 <div class="about-card">
@@ -419,9 +406,8 @@
     <div class="tool-page-inner">
         <a class="back-btn" onclick="closeTool()">← Назад</a>
         <div class="tool-page-title">Xworm v5.6</div>
-        <div class="tool-page-desc">Мощный RAT с широким функционалом для удалённого управления. Поддерживает множество функций включая кейлоггер, стилер, удалённый рабочий стол и многое другое.</div>
+        <div class="tool-page-desc">Мощный RAT с широким функционалом для удалённого управления. Поддерживает кейлоггер, стилер, удалённый рабочий стол и многое другое.</div>
         <img class="tool-page-img" src="https://media.discordapp.net/attachments/1273284092309540877/1490353221355442307/2026-04-05_165538.png?ex=69d3bf19&is=69d26d99&hm=c695eb315cb499d0599fb7bf82d0b0aa3b4e3839fb392fe64fcf99ff1bbfec47&=&format=webp&quality=lossless">
-        <br>
         <a href="https://drive.google.com/file/d/1gvKrMApXUH7L9t58nG2VZbYwQwGV4Bqe/view?usp=sharing" target="_blank" class="tool-page-download">⬇ Скачать Xworm v5.6</a>
     </div>
 </div>
@@ -430,9 +416,8 @@
     <div class="tool-page-inner">
         <a class="back-btn" onclick="closeTool()">← Назад</a>
         <div class="tool-page-title">Liberium 1.7</div>
-        <div class="tool-page-desc">Быстрый и лёгкий RAT инструмент с удобным интерфейсом и широким набором функций для удалённого управления.</div>
+        <div class="tool-page-desc">Быстрый и лёгкий RAT инструмент с удобным интерфейсом и широким набором функций.</div>
         <img class="tool-page-img" src="https://media.discordapp.net/attachments/1273284092309540877/1490353221640913078/2026-04-05_165436.png?ex=69d3bf19&is=69d26d99&hm=440245c3ef2448c984286cef0b2c69c098e7ec66103c896237096a790a8209e9&=&format=webp&quality=lossless">
-        <br>
         <a href="https://drive.google.com/file/d/1JDgkrktM3JVkHym8L78FVqsJpK9vzZmD/view?usp=sharing" target="_blank" class="tool-page-download">⬇ Скачать Liberium 1.7</a>
     </div>
 </div>
@@ -442,7 +427,6 @@
         <a class="back-btn" onclick="closeTool()">← Назад</a>
         <div class="tool-page-title">NetFoxTool</div>
         <div class="tool-page-desc">Сетевой инструмент для анализа и работы с трафиком. Мощный и удобный в использовании.</div>
-        <br>
         <a href="https://github.com/MarkMarko1978/1/raw/refs/heads/main/NetFoxV2.rar" target="_blank" class="tool-page-download">⬇ Скачать NetFoxTool</a>
     </div>
 </div>
@@ -453,7 +437,6 @@
         <div class="tool-page-title">SheetExploit</div>
         <div class="tool-page-desc">Инструмент для нагрузочного тестирования серверов и сетей.</div>
         <img class="tool-page-img" src="https://media.discordapp.net/attachments/1273284092309540877/1490353220999188560/2026-04-05_165624.png?ex=69d3bf19&is=69d26d99&hm=4bb75aab11e45f923e27ad19f21ce27b6480a48772cbab61835d273122ceeb15&=&format=webp&quality=lossless">
-        <br>
         <a href="https://drive.google.com/file/d/1sLEfJzSj6iPReaQtwnMJB_XyRl_lrmnh/view?usp=sharing" target="_blank" class="tool-page-download">⬇ Скачать SheetExploit</a>
     </div>
 </div>
@@ -464,7 +447,6 @@
         <div class="tool-page-title">Xbinder v2.0</div>
         <div class="tool-page-desc">Склейщик файлов с расширенными возможностями. Поддерживает множество форматов и опций.</div>
         <img class="tool-page-img" src="https://media.discordapp.net/attachments/1273284092309540877/1490353220525228162/2026-04-05_165736.png?ex=69d3bf19&is=69d26d99&hm=dbd217c479ff625a6c6390016b967fb8eeb2900e02afd15492da690b966f2184&=&format=webp&quality=lossless">
-        <br>
         <a href="https://drive.google.com/file/d/1Z-zKWvcVii0lt7DfhgFql8_sGQoxqKvJ/view?usp=sharing" target="_blank" class="tool-page-download">⬇ Скачать Xbinder v2.0</a>
     </div>
 </div>
@@ -475,7 +457,6 @@
         <div class="tool-page-title">Locker Builder</div>
         <div class="tool-page-desc">Конструктор локеров с гибкими настройками. Поддерживает кастомный текст, пароль и цвет фона.</div>
         <img class="tool-page-img" src="https://media.discordapp.net/attachments/1273284092309540877/1490353220126511144/2026-04-05_165814.png?ex=69d3bf19&is=69d26d99&hm=660696dcfb1d0a52238097e382f31696daaf00d19d5abaa5bb4db188439af46b&=&format=webp&quality=lossless">
-        <br>
         <a href="https://drive.google.com/file/d/1NMQqTxo1-d1WAh-68MgAn1eASdqANdN2/view?usp=sharing" target="_blank" class="tool-page-download">⬇ Скачать Locker Builder</a>
     </div>
 </div>
