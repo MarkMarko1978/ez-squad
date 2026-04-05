@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ SQUAD — Arsenal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; }
+
+        body {
+            background: #0a0a0f;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(120, 40, 200, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(80, 0, 180, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 60px;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(120, 40, 200, 0.2);
+        }
+
+        .logo { font-size: 22px; font-weight: 800; letter-spacing: 4px; color: #fff; }
+        .logo span { color: #9b40ff; }
+
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a {
+            color: #aaa;
+            text-decoration: none !important;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #fff; }
+        .nav-links a:visited { text-decoration: none !important; }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #7b2fff, #5500cc);
+            color: #fff !important;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none !important;
+            transition: opacity 0.3s;
+        }
+        .nav-btn:hover { opacity: 0.8; }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-tag {
+            background: rgba(120, 40, 200, 0.15);
+            border: 1px solid rgba(120, 40, 200, 0.4);
+            color: #9b40ff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 { font-size: 80px; font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-bottom: 10px; }
+        .hero h1 .white { color: #fff; }
+        .hero h1 .outline { color: transparent; -webkit-text-stroke: 2px #9b40ff; }
+
+        .hero-sub { font-size: 16px; color: #666; margin: 20px 0 40px; max-width: 500px; line-height: 1.7; }
+
+        .hero-btns { display: flex; gap: 16px; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7b2fff, #5500cc);
+            color: #fff !important;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none !important;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(120, 40, 200, 0.4); }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff !important;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.2s, transform 0.2s;
+            text-decoration: none !important;
+        }
+        .btn-secondary:hover { border-color: #9b40ff; transform: translateY(-2px); }
+
+        .terminal {
+            margin-top: 60px;
+            width: 580px;
+            background: #0f0f18;
+            border: 1px solid rgba(120, 40, 200, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .terminal-bar { background: #1a1a2e; padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #28ca41; }
+        .terminal-title { margin-left: auto; font-size: 11px; color: #555; letter-spacing: 1px; }
+
+        .terminal-body { padding: 20px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 2; }
+        .t-cmd { color: #9b40ff; }
+        .t-gray { color: #555; }
+        .t-green { color: #28ca41; }
+        .t-white { color: #ccc; }
+
+        .tools { position: relative; z-index: 1; padding: 100px 60px; }
+
+        .section-title { text-align: center; font-size: 42px; font-weight: 800; margin-bottom: 10px; }
+        .section-sub { text-align: center; color: #555; margin-bottom: 60px; font-size: 15px; }
+
+        .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+
+        .tool-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(120, 40, 200, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .tool-card:hover { border-color: #9b40ff; transform: translateY(-4px); }
+
+        .tool-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, rgba(120,40,200,0.3), rgba(80,0,180,0.1));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; margin-bottom: 16px;
+        }
+
+        .tool-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+        .tool-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 20px; }
+
+        .tool-btn {
+            background: linear-gradient(135deg, #7b2fff, #5500cc);
+            color: #fff !important;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+            text-decoration: none !important;
+            display: inline-block;
+        }
+        .tool-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+
+        .about {
+            position: relative;
+            z-index: 1;
+            padding: 100px 60px;
+            text-align: center;
+            border-top: 1px solid rgba(120, 40, 200, 0.15);
+        }
+
+        .about-inner { max-width: 800px; margin: 0 auto; }
+        .about-text { color: #666; font-size: 16px; line-height: 1.8; margin: 20px 0 50px; }
+        .about-cards { display: flex; justify-content: center; gap: 20px; }
+
+        .about-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(120, 40, 200, 0.2);
+            border-radius: 16px;
+            padding: 40px 60px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .about-card:hover { border-color: #9b40ff; transform: translateY(-4px); }
+        .about-name { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .about-role { font-size: 13px; color: #9b40ff; letter-spacing: 1px; }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(120, 40, 200, 0.15);
+            color: #333;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        footer span { color: #9b40ff; }
+
+        a { text-decoration: none !important; }
+        a:visited { text-decoration: none !important; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">EZ <span>SQUAD</span></div>
+    <ul class="nav-links">
+        <li><a href="#">Главная</a></li>
+        <li><a href="#tools">Тулки</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="https://discord.gg/dkPgGBkU4N" target="_blank">Ссылки</a></li>
+    </ul>
+    <a href="https://discord.gg/dkPgGBkU4N" target="_blank" class="nav-btn">Discord</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-tag">⚡ EZ SQUAD Arsenal</div>
+    <h1>
+        <span class="white">EZ SQUAD —</span><br>
+        <span class="outline">ЭТО СИЛА</span>
+    </h1>
+    <p class="hero-sub">Открытое комьюнити с большим количеством тулок и готовых помочь друг другу</p>
+    <div class="hero-btns">
+        <a href="#tools" class="btn-primary">⚡ Тулки</a>
+        <a href="https://discord.gg/dkPgGBkU4N" target="_blank" class="btn-secondary">→ Discord</a>
+    </div>
+
+    <div class="terminal">
+        <div class="terminal-bar">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+            <span class="terminal-title">ez@server: ~</span>
+        </div>
+        <div class="terminal-body">
+            <div><span class="t-cmd">ez@server:~$</span> <span class="t-white">sudo ./check_tools.sh</span></div>
+            <div><span class="t-gray">[sudo] password: ********</span></div>
+            <div><span class="t-gray">Checking tool integrity...</span></div>
+            <div><span class="t-green">Xworm-5.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
+            <div><span class="t-green">Liberium-1.7&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
+            <div><span class="t-green">NetFoxTool&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
+            <div><span class="t-green">Xbinder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
+            <div><span class="t-green">Sheet DDOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ 200 ]</span></div>
+            <div><span class="t-green">Locker Builder&nbsp;&nbsp;[ 200 ]</span></div>
+            <div><span class="t-gray">6/6 Completed</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="tools" id="tools">
+    <h2 class="section-title">Наши <span style="color:#9b40ff">Тулки</span></h2>
+    <p class="section-sub">Всё необходимое в одном месте</p>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">💥</div>
+            <div class="tool-name">Xworm v5.6</div>
+            <div class="tool-desc">Мощный RAT с широким функционалом для удалённого управления</div>
+            <a href="https://drive.google.com/file/d/1gvKrMApXUH7L9t58nG2VZbYwQwGV4Bqe/view?usp=sharing" target="_blank" class="tool-btn">⬇ Скачать</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">⚡</div>
+            <div class="tool-name">Liberium 1.7</div>
+            <div class="tool-desc">Быстрый и лёгкий инструмент для работы</div>
+            <a href="https://drive.google.com/file/d/1JDgkrktM3JVkHym8L78FVqsJpK9vzZmD/view?usp=sharing" target="_blank" class="tool-btn">⬇ Скачать</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🦊</div>
+            <div class="tool-name">NetFoxTool</div>
+            <div class="tool-desc">Сетевой инструмент для анализа и работы с трафиком</div>
+            <a href="https://drive.google.com/file/d/1KJtZ-QpWZHIz_8R068ck6utpu74lUY4a/view" target="_blank" class="tool-btn">⬇ Скачать</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">💀</div>
+            <div class="tool-name">Sheet DDOS</div>
+            <div class="tool-desc">Инструмент для нагрузочного тестирования</div>
+            <a href="https://drive.google.com/file/d/1sLEfJzSj6iPReaQtwnMJB_XyRl_lrmnh/view?usp=sharing" target="_blank" class="tool-btn">⬇ Скачать</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🔗</div>
+            <div class="tool-name">Xbinder</div>
+            <div class="tool-desc">Склейщик файлов с расширенными возможностями</div>
+            <a href="https://drive.google.com/file/d/1Z-zKWvcVii0lt7DfhgFql8_sGQoxqKvJ/view?usp=sharing" target="_blank" class="tool-btn">⬇ Скачать</a>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🔒</div>
+            <div class="tool-name">Locker Builder</div>
+            <div class="tool-desc">Конструктор локеров с гибкими настройками</div>
+            <a href="https://drive.google.com/file/d/1NMQqTxo1-d1WAh-68MgAn1eASdqANdN2/view?usp=sharing" target="_blank" class="tool-btn">⬇ Скачать</a>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="about-inner">
+        <div class="hero-tag">👤 О нас</div>
+        <h2 class="section-title">Кто мы <span style="color:#9b40ff">такие?</span></h2>
+        <p class="about-text">EZ SQUAD — это команда профессионалов под руководством <span style="color:#9b40ff">lort</span>. Мы собрали лучшие инструменты в одном месте для нашего комьюнити.</p>
+        <div class="about-cards">
+            <div class="about-card">
+                <div style="font-size:36px;margin-bottom:12px">👑</div>
+                <div class="about-name">lort</div>
+                <div class="about-role">Основатель EZ SQUAD</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <span>EZ SQUAD</span> — All rights reserved</p>
+</footer>
+
+</body>
+</html>
